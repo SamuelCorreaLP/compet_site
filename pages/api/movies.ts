@@ -1,6 +1,7 @@
 import { connectToDatabase } from "../../util/mongodb";
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase();
 
   const movies = await db
