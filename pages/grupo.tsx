@@ -2,18 +2,22 @@ import styles from '../styles/Grupo.module.css'
 import Link from 'next/link'
 import { listMovies } from '@/services/movies'
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export default function Grupo() {
-  const [movies, setMovies] = useState([] as any);
-  const teste = listMovies()
-  console.log(teste)
+export default function Grupo(dados) {
 
   return (
     <div>
       <h1>Membros</h1>
-      <p>
-        {movies.map(movie => <h3>{movie}</h3>)}
-      </p>
+      {console.log(dados)}
     </div>
   )
 }
+
+Grupo.getInitialProps = async () => {
+  const response = await axios.get (
+    'http://localhost:3000/api/movies'
+  );
+
+  return { dados: response.data }
+};
