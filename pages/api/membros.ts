@@ -4,12 +4,11 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase();
 
-  const movies = await db
-    .collection("movies")
+  const membros = await db
+    .collection("membros")
     .find({})
-    .sort({ metacritic: -1 })
-    .limit(20)
+    .sort({data_inicio : -1 })
     .toArray();
 
-  res.json(movies);
+  res.json(membros);
 };

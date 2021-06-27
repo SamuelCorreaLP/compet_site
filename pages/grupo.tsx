@@ -1,6 +1,5 @@
 import styles from '../styles/Grupo.module.css'
 import Link from 'next/link'
-import { listMovies } from '@/services/movies'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -16,7 +15,7 @@ export default function Grupo(dados) {
 
 Grupo.getInitialProps = async () => {
   const response = await axios.get (
-    'http://localhost:3000/api/movies'
+    'http://localhost:3000/api/membros'
   );
 
   return { dados: response.data }

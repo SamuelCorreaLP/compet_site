@@ -1,5 +1,17 @@
-export default function Certificados() {
+import axios from 'axios';
+export default function Certificados(dados) {
     return (
-      <h1>Certificados</h1>
+      <div>
+        <h1>Certificados</h1>
+        {console.log(dados)}
+    </div>
     )
   }
+
+  Certificados.getInitialProps = async () => {
+    const response = await axios.get (
+      'http://localhost:3000/api/certificados'
+    );
+  
+    return { dados: response.data }
+  };
